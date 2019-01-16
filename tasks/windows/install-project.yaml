@@ -15,7 +15,7 @@
       project_name: "{{ project_name_output.stdout_lines[0] }}"
     tags: install-project
 
-    - name: Set repo_path variable
+  - name: Set repo_path variable
     set_fact:
       repo_path: '{{ win_dir.build.replace(backslash, "/") | capitalize }}'
     when: project_name != "openstack_requirements"
