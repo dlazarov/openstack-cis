@@ -1,21 +1,21 @@
 ---
   - name: Check if python archive is present
     win_stat:
-      path: "{{ win_dir.tmp }}\\python.zip"
+      path: "{{ win_dir.tmp }}\\{{ win_python_archive }}"
     register: python_zip
     tags: install-python
 
   - name: Download python archive
     win_get_url:
       url: "{{ win_python_archive_url }}"
-      dest: "{{ win_dir.tmp }}\\python.zip"
+      dest: "{{ win_dir.tmp }}\\{{ win_python_archive }}"
     when: python_zip.stat.exists == False     
     tags: install-python
 
   - name: Unzip python archive
     cb_unzip:
-      src: "{{ win_dir.tmp }}\\python.zip"
-      dest: "{{ win_dir.python  }}"
+      src: "{{ win_dir.tmp }}\\{{ win_python_archive }}"
+      dest: "{{ win_dir.python }}"
     tags: install-python
 
   - name: Add python to PATH
