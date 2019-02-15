@@ -277,6 +277,7 @@ win_dir:
   fs_store_volume: 'C:\ClusterStorage\Volume1'
   fs_store_share: 'C:\ClusterStorage\Volume1\share'
   fs_store_images: 'C:\ClusterStorage\Volume1\share\images'
+## fs_store_* required because win_file module does not support recurse creation
 
 join_ad: False
 ### MUST ENSURE THAT openstack/requirements PROJECT IS ALWAYS ON THE FIRST POSITION in git_prep_projects VARIABLE
