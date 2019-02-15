@@ -26,3 +26,6 @@ data_bridge: br-data
 
 win2016_compute_nodes: "{{ groups['win2016-compute'] }}"
 devstack_ip: "{{ groups['devstack'][0] }}"
+
+## used for GLANCE job
+compute_public_ip: "{{ groups['win2016-compute'][0] }}"
