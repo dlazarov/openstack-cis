@@ -85,6 +85,9 @@
         dest: "{{ win_dir.etc }}\\policy.json"
       tags: create-configs
 
+    - include: tasks/windows/add-glance-requirements.yaml
+      when: zuul_project == "openstack/glance"
+
     - include: tasks/windows/install-utils.yaml
     - include: tasks/windows/install-python.yaml
     - include: tasks/windows/install-pip.yaml

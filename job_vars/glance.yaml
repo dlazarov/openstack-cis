@@ -301,7 +301,7 @@ services:
     description: OpenStack Glance-Api Service
     binary: "{{ win_dir.python }}\\scripts\\glance-api.exe"
     config: "{{ win_dir.etc }}\\glance-api.conf"
-    template: glance-api.conf
+    template: glance/glance-api.conf
 
 ## commented cherry pick used only for master branch
 win_cherry_picks:
