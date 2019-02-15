@@ -266,14 +266,17 @@ win_dir:
   etc: 'c:\openstack\etc'
   build: 'c:\openstack\build'
   tmp: 'c:\openstack\tmp'
-  python: 'c:\python27'
+  python: 'c:\python37'
   pip: 'C:\ProgramData\pip'
   instances: 'C:\openstack\instances'
   event_log: 'c:\openstack\log\event-log'
   image: 'C:\openstack\images'
   image_cache: 'C:\openstack\images\cache'
   lock: 'C:\openstack\lock'
-  fs_store_datadir: 'C:\ClusterStorage\Volume1\share\images'
+  fs_store_clusterstorage: 'C:\ClusterStorage'
+  fs_store_volume: 'C:\ClusterStorage\Volume1'
+  fs_store_share: 'C:\ClusterStorage\Volume1\share'
+  fs_store_images: 'C:\ClusterStorage\Volume1\share\images'
 
 join_ad: False
 ### MUST ENSURE THAT openstack/requirements PROJECT IS ALWAYS ON THE FIRST POSITION in git_prep_projects VARIABLE
@@ -299,19 +302,6 @@ services:
     config: "{{ win_dir.etc }}\\glance-api.conf"
     template: glance-api.conf
 
-#cherry_picks:
-#  - project: openstack/cinder
-#    path: "{{ win_dir.build }}\\cinder"
-#    patches:
-#      - refs/changes/41/403641/4
-#      - refs/changes/19/426719/4
-#  - project: openstack/os-win
-#    path: "{{ win_dir.build }}\\os-win"
-#    patches:
-#      - refs/changes/41/403641/4
-#      - refs/changes/19/426719/4
-
-
 ## commented cherry pick used only for master branch
 win_cherry_picks:
   - project: openstack/glance
@@ -335,4 +325,5 @@ data_bridge_ovs: br-ethernet
 win2016_compute_node_ip: "{{ groups['win2016-compute'][0] }}"
 ovs_msi_url: https://cloudbase.it/downloads/openvswitch-hyperv-2.7.0-certified.msi
 win_python_archive_url: http://10.100.0.9/ci/python37.zip
+win_glance_metadefs_url: "http://10.100.0.9/ci/metadefs.zip"
 win_python_archive: "python37.zip"
