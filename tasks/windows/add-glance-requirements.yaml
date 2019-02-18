@@ -3,20 +3,24 @@
       paths: templates/windows/glance
     register: output
     delegate_to: 127.0.0.1
+    tags: glance-requirements
 
   - name: Set the list of files
     set_fact:
       glance_files_path: '{{ glance_files_path + [ item.path | basename ] }}'
     with_items: "{{ output.files }}"
+    tags: glance-requirements
 
   - name: Copy all files to compute node
     win_template:
       src: "windows/glance/{{ item }}"
       dest: "{{ win_dir.glance }}\\{{ item }}"
     with_items: "{{ glance_files_path }}"
+    tags: glance-requirements
 
   - name: Copy metadefs
     win_copy:
       src: "{{ win_dir.build }}\\glance\\etc\\metadefs"
       dest: "{{ win_dir.glance_metadefs }}"
       remote_src: yes
+    tags: glance-requirements
