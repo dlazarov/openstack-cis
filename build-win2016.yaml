@@ -74,7 +74,7 @@
     - name: Create config files
       win_template:
         src: "windows/{{ item.template }}"
-        dest: "{{ item.config}}"
+        dest: "{{ item.config }}"
       with_items: "{{ services }}"
       failed_when: False
       tags: create-configs

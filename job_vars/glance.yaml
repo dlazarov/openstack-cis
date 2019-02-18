@@ -273,6 +273,8 @@ win_dir:
   image: 'C:\openstack\images'
   image_cache: 'C:\openstack\images\cache'
   lock: 'C:\openstack\lock'
+  glance: 'C:\openstack\etc\glance'
+  glance_metadefs: 'C:\openstack\etc\glance\metadefs'
   fs_store_clusterstorage: 'C:\ClusterStorage'
   fs_store_volume: 'C:\ClusterStorage\Volume1'
   fs_store_share: 'C:\ClusterStorage\Volume1\share'
@@ -300,7 +302,7 @@ services:
     name: glance-api
     description: OpenStack Glance-Api Service
     binary: "{{ win_dir.python }}\\scripts\\glance-api.exe"
-    config: "{{ win_dir.etc }}\\glance-api.conf"
+    config: "{{ win_dir.glance }}\\glance-api.conf"
     template: glance-api.conf
 
 ## commented cherry pick used only for master branch
@@ -326,5 +328,5 @@ data_bridge_ovs: br-ethernet
 win2016_compute_node_ip: "{{ groups['win2016-compute'][0] }}"
 ovs_msi_url: https://cloudbase.it/downloads/openvswitch-hyperv-2.7.0-certified.msi
 win_python_archive_url: http://10.100.0.9/ci/python37.zip
-win_glance_metadefs_url: "http://10.100.0.9/ci/metadefs.zip"
 win_python_archive: "python37.zip"
+glance_files_path: []
