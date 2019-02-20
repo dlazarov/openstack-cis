@@ -16,7 +16,7 @@ win_dir:
   build: 'c:\openstack\build'
   tmp: 'c:\openstack\tmp'
   python2: 'c:\python27'
-  python3: 'c:\python37'
+  python: 'c:\python37'
   pip: 'C:\ProgramData\pip'
   instances: 'C:\openstack\instances'
   event_log: 'c:\openstack\log\event-log'
@@ -28,7 +28,7 @@ neutron_ovs_agent:
   - neutron:
     name: neutron-ovs-agent
     description: OpenStack Neutron OVS Agent Service
-    binary: "{{ win_dir.python3 }}\\scripts\\neutron-openvswitch-agent.exe"
+    binary: "{{ win_dir.python }}\\scripts\\neutron-openvswitch-agent.exe"
     config: "{{ win_dir.etc }}\\neutron-ovs-agent.conf"
     template: neutron-ovs-agent.conf
 
@@ -36,7 +36,7 @@ neutron_hyperv_agent:
   - neutron:
     name: neutron-hyperv-agent
     description: OpenStack Neutron Hyper-V Agent Service
-    binary: "{{ win_dir.python3 }}\\scripts\\neutron-hyperv-agent.exe"
+    binary: "{{ win_dir.python }}\\scripts\\neutron-hyperv-agent.exe"
     config: "{{ win_dir.etc }}\\neutron-hyperv-agent.conf"
     template: neutron-hyperv-agent.conf
 

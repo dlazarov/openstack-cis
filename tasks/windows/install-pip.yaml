@@ -15,12 +15,12 @@
   - name: Install pip version "{{ pip_version }}"
     win_shell: python "{{ win_dir.tmp }}\\get-pip.py" -c "{{ win_dir.tmp }}\\constraints.txt" pip
     args:
-      creates: "{{ win_dir.python3 }}\\lib\\site-packages\\pip"
+      creates: "{{ win_dir.python }}\\lib\\site-packages\\pip"
     when: zuul_project == "openstack/glance"
     tags: install-pip
 
-  - name: Install pip version "{{ pip_version }}"
-    win_shell: "{{ win_dir.python2 }}\\python {{ win_dir.tmp }}\\get-pip.py -c {{ win_dir.tmp }}\\constraints.txt pip"
+  - name: Install pip for python3
+    win_shell: "{{ win_dir.python2 }}\\python {{ win_dir.tmp }}\\get-pip.py"
     args:
       creates: "{{ win_dir.python2 }}\\lib\\site-packages\\pip"
     tags: install-pip
