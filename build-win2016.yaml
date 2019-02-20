@@ -85,10 +85,11 @@
         dest: "{{ win_dir.etc }}\\policy.json"
       tags: create-configs
 
-    - include: tasks/windows/add-glance-requirements.yaml
-      when: zuul_project == "openstack/glance"
 
     - include: tasks/windows/install-utils.yaml
+    - include: tasks/windows/install-python3.yaml
+      when: zuul_project == "openstack/glance"
+
     - include: tasks/windows/install-python.yaml
     - include: tasks/windows/install-pip.yaml
     - include: tasks/windows/configure-pip-index.yaml
@@ -97,6 +98,9 @@
     - include: tasks/windows/install-freerdp.yaml
     - include: tasks/windows/install-zuul.yaml
     - include: tasks/windows/prepare-git-repos.yaml
+
+    - include: tasks/windows/add-glance-requirements.yaml
+      when: zuul_project == "openstack/glance"
 
     - include: tasks/windows/upper-constraints-mods.yaml
       with_items: "{{ win_upper_constraints_pinning }}"

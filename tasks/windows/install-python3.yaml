@@ -1,0 +1,27 @@
+---
+  - name: Check if python3 archive is present
+    win_stat:
+      path: "{{ win_dir.tmp }}\\{{ win_python3_archive }}"
+    register: python_zip
+    tags: install-python
+
+  - name: Download python3 archive
+    win_get_url:
+      url: "{{ win_python3_archive_url }}"
+      dest: "{{ win_dir.tmp }}\\{{ win_python3_archive }}"
+    when: python_zip.stat.exists == False     
+    tags: install-python
+
+  - name: Unzip python3 archive
+    cb_unzip:
+      src: "{{ win_dir.tmp }}\\{{ win_python3_archive }}"
+      dest: "{{ win_dir.python }}"
+    tags: install-python
+
+  - name: Add python3 to PATH
+    cb_path:
+      elements:
+      - "{{ win_dir.python3 }}"
+      - "{{ win_dir.python3 }}\\scripts"
+      state: present
+    tags: install-python

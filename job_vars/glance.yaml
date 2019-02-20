@@ -266,7 +266,8 @@ win_dir:
   etc: 'c:\openstack\etc'
   build: 'c:\openstack\build'
   tmp: 'c:\openstack\tmp'
-  python: 'c:\python37'
+  python2: 'c:\python27'
+  python3: 'c:\python37'
   pip: 'C:\ProgramData\pip'
   instances: 'C:\openstack\instances'
   event_log: 'c:\openstack\log\event-log'
@@ -327,6 +328,4 @@ vmswitches:
 data_bridge_ovs: br-ethernet
 win2016_compute_node_ip: "{{ groups['win2016-compute'][0] }}"
 ovs_msi_url: https://cloudbase.it/downloads/openvswitch-hyperv-2.7.0-certified.msi
-win_python_archive_url: http://10.100.0.9/ci/python37.zip
-win_python_archive: "python37.zip"
 glance_files_path: []
