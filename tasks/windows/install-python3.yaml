@@ -15,7 +15,7 @@
   - name: Unzip python3 archive
     cb_unzip:
       src: "{{ win_dir.tmp }}\\{{ win_python3_archive }}"
-      dest: "{{ win_dir.python }}"
+      dest: "{{ win_dir.python3 }}"
     tags: install-python
 
   - name: Add python3 to PATH
