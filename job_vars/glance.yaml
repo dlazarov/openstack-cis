@@ -296,13 +296,13 @@ services:
   - nova:
     name: nova-compute
     description: OpenStack nova Compute Service
-    binary: "{{ win_dir.python }}\\scripts\\nova-compute.exe"
+    binary: "{{ win_dir.python3 }}\\scripts\\nova-compute.exe"
     config: "{{ win_dir.etc }}\\nova.conf"
     template: nova.conf
   - glance-api:
     name: glance-api
     description: OpenStack Glance-Api Service
-    binary: "{{ win_dir.python }}\\scripts\\glance-api.exe"
+    binary: "{{ win_dir.python3 }}\\scripts\\glance-api.exe"
     config: "{{ win_dir.glance }}\\glance-api.conf"
     template: glance-api.conf
 
