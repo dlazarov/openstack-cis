@@ -290,6 +290,7 @@ win_git_prep_projects:
   - openstack/neutron
   - openstack/glance
   - openstack/os-win
+  - openstack/compute-hyperv
   - openstack/networking-hyperv
   
 services:
