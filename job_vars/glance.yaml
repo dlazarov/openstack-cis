@@ -320,6 +320,7 @@ compute_driver: compute_hyperv.driver.HyperVDriver
 
 win_python_packages:
   - ovs
+  - certifi
 
 vmswitches:
   - name: "{{ data_bridge }}"
