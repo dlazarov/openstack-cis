@@ -1,0 +1,21 @@
+- name: Retrieve glance controller endpoint
+  shell: |
+    source /home/ubuntu/keystonerc
+    openstack endpoint list | grep "glance" | awk '{print $2}'
+  args:
+    executable: /bin/bash
+  register: glance_uuid
+  tags: set-glance-endpoint
+
+- name: Print glance_uuid content
+  debug: msg={{ glance_uuid }}
+  tags: set-glance-endpoint
+
+- name: Disable glance controller endpoint
+  shell: |
+    source /home/ubuntu/keystonerc
+    openstack endpoint set --disable "{{ glance_uuid.stdout }}"
+    openstack endpoint create glance public --region RegionOne "http://{{ compute_public_ip }}:9292"
+  args:
+    executable: /bin/bash
+  tags: set-glance-endpoint
