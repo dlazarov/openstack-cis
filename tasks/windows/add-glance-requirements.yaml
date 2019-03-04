@@ -21,6 +21,6 @@
   - name: Copy metadefs
     win_copy:
       src: "{{ win_dir.build }}\\glance\\etc\\metadefs"
-      dest: "{{ win_dir.glance_metadefs }}"
+      dest: "{{ win_dir.glance }}"
       remote_src: yes
     tags: glance-requirements
