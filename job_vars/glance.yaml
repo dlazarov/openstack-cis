@@ -122,6 +122,7 @@ local_conf:
     - q-meta
     - q-metering
     - q-vpn
+    - g-api
     - g-reg
     - cinder
     - c-api
@@ -151,7 +152,6 @@ local_conf:
     - n-cpu
     - q-lbaas
     - q-fwaas
-    - g-api
     - horizon
 
   ip_version: 4
