@@ -236,6 +236,7 @@
 
     - include: tasks/devstack/discover-hosts.yaml
     - include: tasks/devstack/set-glance-endpoints.yaml
+    - include: tasks/devstack/set-glance-image.yaml
 
     - name: Restart nova api
       service:

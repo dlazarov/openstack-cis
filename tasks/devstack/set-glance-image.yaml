@@ -1,0 +1,11 @@
+- name: "Get {{ local_conf.image_urls | basename }} image"
+  get_url:
+    url: "{{ local_conf.image_urls }}"
+    dest: "/home/ubuntu/devstack/files/{{ local_conf.image_urls | basename }}"
+
+- name: "Upload {{ local_conf.image_urls | basename }} image"
+  shell: |
+    source /home/ubuntu/keystonerc
+    bash /home/ubuntu/devstack/tools/upload_image.sh "{{ local_conf.image_urls }}"
+  args:
+    executable: /bin/bash
