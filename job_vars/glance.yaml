@@ -197,6 +197,10 @@ local_conf:
 
 post_stack_bash: |
     source {{ devstack_dir.devstack }}/functions
+    CINDER_CONFIG=/etc/cinder/cinder.conf
+    inidelete $CINDER_CONFIG DEFAULT glance_api_servers
+    sudo systemctl restart devstack@c-*
+    IMAGE_ID=`openstack image list | grep "ubuntu" | awk '{print $2}'`
     TEMPEST_CONFIG={{ devstack_dir.stack }}/tempest/etc/tempest.conf
     iniset $TEMPEST_CONFIG compute volume_device_name "sdb"
     iniset $TEMPEST_CONFIG compute min_compute_nodes {{ win2016_compute_nodes | length }}
@@ -213,8 +217,8 @@ post_stack_bash: |
     iniset $TEMPEST_CONFIG scenario img_disk_format vhdx
     iniset $TEMPEST_CONFIG scenario dhcp_client dhclient
 
-    IMAGE_REF=`iniget $TEMPEST_CONFIG compute image_ref`
-    iniset $TEMPEST_CONFIG compute image_ref_alt $IMAGE_REF
+    iniset $TEMPEST_CONFIG compute image_ref $IMAGE_ID
+    iniset $TEMPEST_CONFIG compute image_ref_alt $IMAGE_ID
     iniset $TEMPEST_CONFIG validation image_ssh_user ubuntu
 
     iniset $TEMPEST_CONFIG compute build_timeout 360
