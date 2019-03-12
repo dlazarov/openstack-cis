@@ -29,6 +29,13 @@ tempest_tests:
       tempest.api.compute.servers.test_server_actions.ServerActionsTestJSON.test_rebuild_server
       tempest.api.compute.servers.test_server_actions.ServerActionsTestJSON.test_rebuild_server_in_stop_state
       tempest.scenario.test_network_v6.TestGettingAddress
+      tempest.api.compute.admin.test_server_diagnostics.ServerDiagnosticsTest.test_get_server_diagnostics
+      tempest.api.compute.admin.test_server_diagnostics.ServerDiagnosticsV248Test.test_get_server_diagnostics
+      tempest.api.compute.admin.test_volume_swap.TestVolumeSwap.test_volume_swap
+      tempest.api.compute.servers.test_device_tagging.TaggedAttachmentsTest.test_tagged_attachment
+      tempest.api.compute.servers.test_server_group.ServerGroupTestJSON.test_create_server_with_scheduler_hint_group
+      tempest.api.volume.test_volumes_extend.VolumesExtendAttachedTest.test_extend_attached_volume
+      tempest.scenario.test_security_groups_basic_ops.TestSecurityGroupsBasicOps
 
   isolated-tests: |
       tempest.api.compute.admin.test_servers_negative.ServersAdminNegativeTestJSON.test_resize_server_using_overlimit_ram
