@@ -293,7 +293,7 @@ win_cherry_picks:
     patches:
       - refs/changes/05/630705/6
       - refs/changes/06/630706/8
-      - refs/changes/07/634007/5
+      - refs/changes/07/634007/9
 
 compute_driver: compute_hyperv.driver.HyperVDriver
 
